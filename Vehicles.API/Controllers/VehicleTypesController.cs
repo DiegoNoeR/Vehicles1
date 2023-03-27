@@ -26,24 +26,6 @@ namespace Vehicles.API.Controllers
                           Problem("Entity set 'DataContext.VehicleType'  is null.");
         }
 
-        // GET: VehicleTypes/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.VehicleType == null)
-            {
-                return NotFound();
-            }
-
-            var vehicleType = await _context.VehicleType
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (vehicleType == null)
-            {
-                return NotFound();
-            }
-
-            return View(vehicleType);
-        }
-
         // GET: VehicleTypes/Create
         public IActionResult Create()
         {
@@ -51,8 +33,6 @@ namespace Vehicles.API.Controllers
         }
 
         // POST: VehicleTypes/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Description")] VehicleType vehicleType)
@@ -83,8 +63,6 @@ namespace Vehicles.API.Controllers
         }
 
         // POST: VehicleTypes/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Description")] VehicleType vehicleType)
