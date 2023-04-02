@@ -35,6 +35,9 @@ namespace Vehicles.API.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Description")
+                        .IsUnique();
+
                     b.ToTable("VehicleType");
                 });
 #pragma warning restore 612, 618

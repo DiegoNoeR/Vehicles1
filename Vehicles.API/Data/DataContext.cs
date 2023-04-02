@@ -12,5 +12,11 @@ using Vehicles.API.Data.Entities;
         {
         }
 
-        public DbSet<Vehicles.API.Data.Entities.VehicleType> VehicleType { get; set; } = default!;
+        public DbSet<Vehicles.API.Data.Entities.VehicleType> VehicleType { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<VehicleType>().HasIndex(x => x.Description).IsUnique();
+        }
     }

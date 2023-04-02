@@ -4,7 +4,7 @@
 
 namespace Vehicles.API.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class AddTableVehicleType : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,6 +20,12 @@ namespace Vehicles.API.Migrations
                 {
                     table.PrimaryKey("PK_VehicleType", x => x.Id);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VehicleType_Description",
+                table: "VehicleType",
+                column: "Description",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
