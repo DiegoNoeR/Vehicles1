@@ -11,12 +11,13 @@ using Vehicles.API.Data.Entities;
             : base(options)
         {
         }
-
+        public DbSet<Vehicles.API.Data.Entities.Procedure> Procedures { get; set; }
         public DbSet<Vehicles.API.Data.Entities.VehicleType> VehicleType { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Procedure>().HasIndex(x => x.Description).IsUnique();
             modelBuilder.Entity<VehicleType>().HasIndex(x => x.Description).IsUnique();
         }
     }
