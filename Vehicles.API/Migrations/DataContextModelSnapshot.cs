@@ -20,6 +20,48 @@ namespace Vehicles.API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("Vehicles.API.Data.Entities.Brand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Description")
+                        .IsUnique();
+
+                    b.ToTable("Brands");
+                });
+
+            modelBuilder.Entity("Vehicles.API.Data.Entities.DocumentType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Description")
+                        .IsUnique();
+
+                    b.ToTable("DocumentTypes");
+                });
+
             modelBuilder.Entity("Vehicles.API.Data.Entities.Procedure", b =>
                 {
                     b.Property<int>("Id")
@@ -62,7 +104,7 @@ namespace Vehicles.API.Migrations
                     b.HasIndex("Description")
                         .IsUnique();
 
-                    b.ToTable("VehicleType");
+                    b.ToTable("VehicleTypes");
                 });
 #pragma warning restore 612, 618
         }

@@ -21,8 +21,8 @@ namespace Vehicles.API.Controllers
         // GET: VehicleTypes
         public async Task<IActionResult> Index()
         {
-              return _context.VehicleType != null ? 
-                          View(await _context.VehicleType.ToListAsync()) :
+              return _context.VehicleTypes != null ? 
+                          View(await _context.VehicleTypes.ToListAsync()) :
                           Problem("Entity set 'DataContext.VehicleType'  is null.");
         }
 
@@ -67,12 +67,12 @@ namespace Vehicles.API.Controllers
         // GET: VehicleTypes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.VehicleType == null)
+            if (id == null || _context.VehicleTypes == null)
             {
                 return NotFound();
             }
 
-            var vehicleType = await _context.VehicleType.FindAsync(id);
+            var vehicleType = await _context.VehicleTypes.FindAsync(id);
             if (vehicleType == null)
             {
                 return NotFound();
@@ -120,12 +120,12 @@ namespace Vehicles.API.Controllers
         // GET: VehicleTypes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.VehicleType == null)
+            if (id == null || _context.VehicleTypes == null)
             {
                 return NotFound();
             }
 
-            var vehicleType = await _context.VehicleType
+            var vehicleType = await _context.VehicleTypes
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (vehicleType == null)
             {
@@ -140,14 +140,14 @@ namespace Vehicles.API.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.VehicleType == null)
+            if (_context.VehicleTypes == null)
             {
                 return Problem("Entity set 'DataContext.VehicleType'  is null.");
             }
-            var vehicleType = await _context.VehicleType.FindAsync(id);
+            var vehicleType = await _context.VehicleTypes.FindAsync(id);
             if (vehicleType != null)
             {
-                _context.VehicleType.Remove(vehicleType);
+                _context.VehicleTypes.Remove(vehicleType);
             }
             
             await _context.SaveChangesAsync();
